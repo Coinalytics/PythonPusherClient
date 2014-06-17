@@ -15,7 +15,9 @@ VERSION = "0.2.0"
 
 
 class Pusher(object):
-    host = "ws.pusherapp.com"
+#    host = "ws.pusherapp.com"
+    host = "slanger1.chain.so"
+
     client_id = 'PythonPusherClient'
     protocol = 6
 

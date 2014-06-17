@@ -128,7 +128,14 @@ class Connection(Thread):
         params = self._parse(message)
 
         if 'event' in params.keys():
+
             if 'channel' not in params.keys():
+                # We've got a connection event.  Lets handle it.
+                if 'pusher:connection_established' in self.event_callbacks.keys():
+                    for callback in self.event_callbacks['pusher:connection_established']:
+                        self.logger.info("Executing callback for pusher:connection_established")
+                        callback(params['data'])
+
                 # We've got a connection event.  Lets handle it.
                 if params['event'] in self.event_callbacks.keys():
                     for callback in self.event_callbacks[params['event']]:
